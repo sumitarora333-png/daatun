@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daatun — India's OG Superfoods</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #F5EFE0;
+      --terracotta: #C4562A;
+      --rust: #8B2E0F;
+      --charcoal: #1A1410;
+      --mustard: #D4A017;
+      --purple: #3B1F4E;
+      --kanji-purple: #5C2A6B;
+      --light-cream: #FBF7EE;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--light-cream);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(245,239,224,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,86,42,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--terracotta);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-tagline {
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      opacity: 0.7;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #fff;
+      padding: 0.55rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(37,211,102,0.35);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+    .nav-cta svg { width: 16px; height: 16px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      padding-top: 72px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 3rem 5rem 5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--terracotta);
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 5vw, 5.2rem);
+      font-weight: 800;
+      line-height: 1.0;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #5A4033;
+      max-width: 440px;
+      margin-bottom: 2.8rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--terracotta);
+      color: var(--cream);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+      letter-spacing: 0.01em;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--rust);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+    .btn-primary svg { width: 20px; height: 20px; }
+
+    .btn-secondary {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      opacity: 0.6;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+      font-weight: 400;
+    }
+    .btn-secondary:hover { opacity: 1; }
+
+    /* ── HERO RIGHT (visual) ── */
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg-blob {
+      position: absolute;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #6B2D82 0%, #3B1F4E 60%, transparent 100%);
+      opacity: 0.12;
+      animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    .kanji-visual {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .kanji-jar {
+      width: 280px;
+      height: 380px;
+      position: relative;
+      margin: 0 auto 1.5rem;
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    /* SVG Jar illustration */
+    .kanji-jar svg { width: 100%; height: 100%; }
+
+    .kanji-label {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--kanji-purple);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    /* Floating badges */
+    .badge {
+      position: absolute;
+      background: var(--cream);
+      border: 1.5px solid rgba(196,86,42,0.2);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      z-index: 3;
+      animation: float 5s ease-in-out infinite;
+    }
+    .badge-1 { top: 22%; left: 2%; animation-delay: -1s; }
+    .badge-2 { top: 55%; right: 2%; animation-delay: -3s; }
+    .badge-3 { bottom: 18%; left: 8%; animation-delay: -2s; }
+    .badge span { margin-right: 4px; }
+
+    /* ── MARQUEE ── */
+    .marquee-strip {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 0.8rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+      white-space: nowrap;
+      opacity: 0.85;
+    }
+    .marquee-dot { color: var(--mustard); font-size: 1.2rem; line-height: 0; }
+
+    /* ── PRODUCT SECTION ── */
+    .product-section {
+      padding: 7rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--terracotta);
+    }
+
+    .product-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--charcoal);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .product-title em {
+      font-style: italic;
+      color: var(--kanji-purple);
+    }
+
+    .product-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #5A4033;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .benefit-card {
+      background: var(--cream);
+      border: 1px solid rgba(196,86,42,0.15);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+    }
+    .benefit-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .benefit-title { font-size: 0.8rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.2rem; }
+    .benefit-sub { font-size: 0.72rem; color: #7A5C4A; font-weight: 300; }
+
+    /* Product visual */
+    .product-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-circle-bg {
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #C4562A22, #3B1F4E18 70%, transparent);
+      position: absolute;
+    }
+
+    /* ── WHY DAATUN ── */
+    .why-section {
+      background: var(--charcoal);
+      padding: 6rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-section::before {
+      content: 'दातुन';
+      position: absolute;
+      font-family: 'Fraunces', serif;
+      font-size: 20vw;
+      font-weight: 800;
+      color: rgba(255,255,255,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .why-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .why-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+    }
+    .why-title em { font-style: italic; color: var(--mustard); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-card {
+      border: 1px solid rgba(245,239,224,0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .why-card:hover { border-color: rgba(212,160,23,0.4); transform: translateY(-4px); }
+    .why-num {
+      font-family: 'Fraunces', serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--mustard);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .why-card-title { font-size: 1rem; font-weight: 500; color: var(--cream); margin-bottom: 0.6rem; }
+    .why-card-text { font-size: 0.85rem; color: rgba(245,239,224,0.55); line-height: 1.7; font-weight: 300; }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      padding: 7rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(196,86,42,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    .cta-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--charcoal);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+    }
+    .cta-title em { font-style: italic; color: var(--terracotta); }
+
+    .cta-sub {
+      font-size: 1rem;
+      color: #7A5C4A;
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    .cta-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: #25D366;
+      color: #fff;
+      padding: 1.1rem 2.4rem;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 6px 30px rgba(37,211,102,0.35);
+      transition: all 0.25s;
+      letter-spacing: 0.01em;
+    }
+    .cta-wa-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.45);
+    }
+    .cta-wa-btn svg { width: 24px; height: 24px; }
+
+    .cta-note {
+      margin-top: 1.2rem;
+      font-size: 0.78rem;
+      color: #9A7B6A;
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(245,239,224,0.5);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+    footer strong { color: var(--cream); font-weight: 500; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0.8rem 1.2rem; }
+      .nav-tagline { display: none; }
+      .nav-cta { padding: 0.5rem 1rem; font-size: 0.78rem; }
+
+      .hero { grid-template-columns: 1fr; padding-top: 56px; }
+      .hero-left { padding: 2.5rem 1.5rem 2rem; }
+      .hero-right { min-height: 380px; }
+      .badge-1, .badge-2, .badge-3 { display: none; }
+
+      .product-section { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+      .product-visual { display: none; }
+
+      .why-section { padding: 4rem 2rem; }
+      .why-grid { grid-template-columns: 1fr; }
+
+      .cta-section { padding: 4rem 2rem; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Daatun</a>
+    <span class="nav-tagline">India's OG Superfoods</span>
+    <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" class="nav-cta" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Order on WhatsApp
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow fade-up">India's OG Superfoods</div>
+      <h1 class="hero-title fade-up delay-1">
+        Ancient roots.<br/><em>Modern</em><br/>nourishment.
+      </h1>
+      <p class="hero-desc fade-up delay-2">
+        Daatun brings back the forgotten wisdom of India's ancestral pantry — real ingredients, zero compromise, straight from the source to your gut.
+      </p>
+      <div class="hero-actions fade-up delay-3">
+        <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" target="_blank" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          <span>Order Kanji Now</span>
+        </a>
+        <a href="#product" class="btn-secondary">Learn more ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-bg-blob"></div>
+
+      <!-- Floating badges -->
+      <div class="badge badge-1"><span>🦠</span> Probiotic Rich</div>
+      <div class="badge badge-2"><span>🌿</span> 100% Natural</div>
+      <div class="badge badge-3"><span>🇮🇳</span> Made in India</div>
+
+      <div class="kanji-visual">
+        <div class="kanji-jar">
+          <!-- SVG Kanji Jar Illustration -->
+          <svg viewBox="0 0 280 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Jar shadow -->
+            <ellipse cx="140" cy="360" rx="80" ry="12" fill="#3B1F4E" opacity="0.15"/>
+            <!-- Jar body -->
+            <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="#4A1B5C" opacity="0.9"/>
+            <!-- Liquid gradient -->
+            <path d="M62 160 Q52 220 57 285 Q62 338 140 343 Q218 338 223 285 Q228 220 218 160 Z" fill="url(#liquidGrad)"/>
+            <!-- Jar glass highlights -->
+            <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+            <!-- Glass sheen -->
+            <path d="M70 145 Q65 200 68 260" stroke="rgba(255,255,255,0.25)" stroke-width="6" stroke-linecap="round"/>
+            <!-- Jar neck -->
+            <rect x="90" y="100" width="100" height="35" rx="4" fill="#3B1F4E" opacity="0.95"/>
+            <rect x="90" y="100" width="100" height="35" rx="4" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+            <!-- Lid -->
+            <rect x="82" y="82" width="116" height="24" rx="6" fill="#C4562A"/>
+            <rect x="82" y="82" width="116" height="24" rx="6" fill="none" stroke="#8B2E0F" stroke-width="1.5"/>
+            <rect x="88" y="88" width="104" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+            <!-- Label on jar -->
+            <rect x="78" y="175" width="124" height="80" rx="6" fill="rgba(245,239,224,0.92)"/>
+            <text x="140" y="200" text-anchor="middle" font-family="serif" font-size="18" font-weight="800" fill="#3B1F4E">Kanji</text>
+            <text x="140" y="216" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#C4562A" letter-spacing="2" font-weight="600">DAATUN</text>
+            <line x1="90" y1="222" x2="190" y2="222" stroke="#C4562A" stroke-width="0.8" opacity="0.4"/>
+            <text x="140" y="235" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="#5A4033" letter-spacing="1">BLACK CARROT PROBIOTIC</text>
+            <text x="140" y="246" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#7A5C4A" opacity="0.7">500ml</text>
+            <!-- Bubbles in liquid -->
+            <circle cx="100" cy="290" r="4" fill="rgba(255,255,255,0.12)"/>
+            <circle cx="165" cy="310" r="6" fill="rgba(255,255,255,0.08)"/>
+            <circle cx="185" cy="275" r="3" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="120" cy="315" r="5" fill="rgba(255,255,255,0.1)"/>
+            <!-- Defs -->
+            <defs>
+              <linearGradient id="liquidGrad" x1="60" y1="160" x2="225" y2="345" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#6B1F82"/>
+                <stop offset="50%" stop-color="#4A1060"/>
+                <stop offset="100%" stop-color="#2E0A3F"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="kanji-label">Kanji — Black Carrot Probiotic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Probiotic Rich</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Gut Health</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Ancestral Recipe</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Zero Preservatives</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>India's OG Superfoods</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Black Carrot</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Immunity Booster</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>100% Natural</div>
+      <!-- Duplicate for loop -->
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Probiotic Rich</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Gut Health</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Ancestral Recipe</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Zero Preservatives</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>India's OG Superfoods</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Black Carrot</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Immunity Booster</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>100% Natural</div>
+    </div>
+  </div>
+
+  <!-- PRODUCT SECTION -->
+  <section class="product-section" id="product">
+    <div>
+      <div class="section-label">Our First Drop</div>
+      <h2 class="product-title">Meet <em>Kanji</em> —<br/>your gut's best friend</h2>
+      <p class="product-desc">
+        Kanji is India's oldest probiotic drink, fermented from black carrots and mustard seeds. Our grandmothers knew it. We forgot it. Daatun brings it back — pure, potent, and alive.
+      </p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🦠</div>
+          <div class="benefit-title">Probiotic Rich</div>
+          <div class="benefit-sub">Millions of live cultures per bottle</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🫀</div>
+          <div class="benefit-title">Gut Health</div>
+          <div class="benefit-sub">Supports digestion & microbiome</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <div class="benefit-title">Immunity</div>
+          <div class="benefit-sub">Anthocyanins from black carrot</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🚫</div>
+          <div class="benefit-title">No Additives</div>
+          <div class="benefit-sub">Zero preservatives, zero sugar</div>
+        </div>
+      </div>
+      <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span>Order Kanji via WhatsApp</span>
+      </a>
+    </div>
+
+    <div class="product-visual">
+      <div class="product-circle-bg"></div>
+      <!-- Large decorative text -->
+      <div style="position:relative;z-index:2;text-align:center;">
+        <div style="font-family:'Fraunces',serif;font-size:10rem;font-weight:800;color:var(--kanji-purple);opacity:0.08;line-height:1;user-select:none;">काँजी</div>
+        <div style="margin-top:-4rem;font-family:'Fraunces',serif;font-size:2rem;font-weight:300;font-style:italic;color:var(--kanji-purple);opacity:0.5;">Kanji</div>
+        <div style="margin-top:1rem;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);opacity:0.6;">Since forever</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY DAATUN -->
+  <section class="why-section">
+    <div class="why-header">
+      <div class="section-label" style="color:var(--mustard);justify-content:center;opacity:0.8">The Daatun Way</div>
+      <h2 class="why-title">Why <em>OG</em> matters</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-card-title">Recipes older than time</div>
+        <div class="why-card-text">Our formulations come from centuries-old Indian kitchen wisdom, not a lab. The OG way, always.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-card-title">Nothing hidden, nothing added</div>
+        <div class="why-card-text">Every Daatun product is clean-label — what you see is what you get. No fillers, no shortcuts.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-card-title">Small batch, high integrity</div>
+        <div class="why-card-text">We make in small batches so every bottle gets the care it deserves. Quality over quantity, always.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-eyebrow">Ready to go OG?</div>
+    <h2 class="cta-title">Order your first<br/><em>Kanji</em> today</h2>
+    <p class="cta-sub">Tap below to chat with us on WhatsApp. We'll take your order, answer your questions, and get your Kanji to you fresh.</p>
+    <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" target="_blank" class="cta-wa-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Chat with us on WhatsApp
+    </a>
+    <p class="cta-note">We usually reply within a few minutes 🙌</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>Daatun</strong> · India's OG Superfoods · <a href="https://daatun.co.in" style="color:inherit">daatun.co.in</a></p>
+  </footer>
+
+</body>
+</html>
