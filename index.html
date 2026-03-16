@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daatun — India's OG Superfoods</title>
+  <title>Daatun | India's OG Superfoods</title>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -87,6 +87,20 @@
     }
     .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
     .nav-cta svg { width: 16px; height: 16px; }
+
+    .nav-ig {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(196,86,42,0.3);
+      color: var(--terracotta);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-ig:hover { background: var(--terracotta); color: #fff; border-color: var(--terracotta); }
+    .nav-ig svg { width: 16px; height: 16px; }
 
     /* ── HERO ── */
     .hero {
@@ -393,7 +407,7 @@
       content: 'दातुन';
       position: absolute;
       font-family: 'Fraunces', serif;
-      font-size: 20vw;
+      font-size: 18vw;
       font-weight: 800;
       color: rgba(255,255,255,0.03);
       top: 50%;
@@ -401,6 +415,8 @@
       transform: translate(-50%, -50%);
       white-space: nowrap;
       pointer-events: none;
+      overflow: hidden;
+      max-width: 100%;
     }
 
     .why-header {
@@ -534,22 +550,23 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 0.8rem 1.2rem; }
-      .nav-tagline { display: none; }
-      .nav-cta { padding: 0.5rem 1rem; font-size: 0.78rem; }
-
-      .hero { grid-template-columns: 1fr; padding-top: 56px; }
-      .hero-left { padding: 2.5rem 1.5rem 2rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 4rem 1.5rem 2rem; }
       .hero-right { min-height: 380px; }
       .badge-1, .badge-2, .badge-3 { display: none; }
 
-      .product-section { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+      .product-section { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
       .product-visual { display: none; }
 
-      .why-section { padding: 4rem 2rem; }
+      .why-section { padding: 4rem 1.5rem; }
       .why-grid { grid-template-columns: 1fr; }
 
-      .cta-section { padding: 4rem 2rem; }
+      .cta-section { padding: 4rem 1.5rem; }
+
+      nav { padding: 0.9rem 1.2rem; gap: 0.5rem; }
+      .nav-tagline { display: none; }
+      .nav-logo { font-size: 1.3rem; }
+      .nav-cta { padding: 0.5rem 0.9rem; font-size: 0.76rem; }
     }
 
     /* ── ANIMATIONS ── */
@@ -573,10 +590,15 @@
   <nav>
     <a href="#" class="nav-logo">Daatun</a>
     <span class="nav-tagline">India's OG Superfoods</span>
-    <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" class="nav-cta" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      Order on WhatsApp
-    </a>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="https://instagram.com/daatun.co" class="nav-ig" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" class="nav-cta" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Order on WhatsApp
+      </a>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -587,7 +609,7 @@
         Ancient roots.<br/><em>Modern</em><br/>nourishment.
       </h1>
       <p class="hero-desc fade-up delay-2">
-        Daatun brings back the forgotten wisdom of India's ancestral pantry — real ingredients, zero compromise, straight from the source to your gut.
+        Daatun brings back the forgotten wisdom of India's ancestral pantry. Real ingredients, zero compromise, straight from the source to your gut.
       </p>
       <div class="hero-actions fade-up delay-3">
         <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" target="_blank" class="btn-primary">
@@ -613,7 +635,7 @@
             <!-- Jar shadow -->
             <ellipse cx="140" cy="360" rx="80" ry="12" fill="#3B1F4E" opacity="0.15"/>
             <!-- Jar body -->
-            <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="#4A1B5C" opacity="0.9"/>
+            <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="#5C1A2E" opacity="0.9"/>
             <!-- Liquid gradient -->
             <path d="M62 160 Q52 220 57 285 Q62 338 140 343 Q218 338 223 285 Q228 220 218 160 Z" fill="url(#liquidGrad)"/>
             <!-- Jar glass highlights -->
@@ -632,7 +654,7 @@
             <text x="140" y="200" text-anchor="middle" font-family="serif" font-size="18" font-weight="800" fill="#3B1F4E">Kanji</text>
             <text x="140" y="216" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#C4562A" letter-spacing="2" font-weight="600">DAATUN</text>
             <line x1="90" y1="222" x2="190" y2="222" stroke="#C4562A" stroke-width="0.8" opacity="0.4"/>
-            <text x="140" y="235" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="#5A4033" letter-spacing="1">BLACK CARROT PROBIOTIC</text>
+            <text x="140" y="235" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="#5A4033" letter-spacing="1">BEETROOT PROBIOTIC</text>
             <text x="140" y="246" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#7A5C4A" opacity="0.7">500ml</text>
             <!-- Bubbles in liquid -->
             <circle cx="100" cy="290" r="4" fill="rgba(255,255,255,0.12)"/>
@@ -642,14 +664,14 @@
             <!-- Defs -->
             <defs>
               <linearGradient id="liquidGrad" x1="60" y1="160" x2="225" y2="345" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#6B1F82"/>
-                <stop offset="50%" stop-color="#4A1060"/>
-                <stop offset="100%" stop-color="#2E0A3F"/>
+                <stop offset="0%" stop-color="#8B1A3A"/>
+                <stop offset="50%" stop-color="#6B0F28"/>
+                <stop offset="100%" stop-color="#420A18"/>
               </linearGradient>
             </defs>
           </svg>
         </div>
-        <div class="kanji-label">Kanji — Black Carrot Probiotic</div>
+        <div class="kanji-label">Kanji · Beetroot Probiotic</div>
       </div>
     </div>
   </section>
@@ -662,7 +684,7 @@
       <div class="marquee-item"><span class="marquee-dot">✦</span>Ancestral Recipe</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>Zero Preservatives</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>India's OG Superfoods</div>
-      <div class="marquee-item"><span class="marquee-dot">✦</span>Black Carrot</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Beetroot</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>Immunity Booster</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>100% Natural</div>
       <!-- Duplicate for loop -->
@@ -671,7 +693,7 @@
       <div class="marquee-item"><span class="marquee-dot">✦</span>Ancestral Recipe</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>Zero Preservatives</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>India's OG Superfoods</div>
-      <div class="marquee-item"><span class="marquee-dot">✦</span>Black Carrot</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>Beetroot</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>Immunity Booster</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>100% Natural</div>
     </div>
@@ -681,9 +703,9 @@
   <section class="product-section" id="product">
     <div>
       <div class="section-label">Our First Drop</div>
-      <h2 class="product-title">Meet <em>Kanji</em> —<br/>your gut's best friend</h2>
+      <h2 class="product-title">Meet <em>Kanji</em>,<br/>your gut's best friend</h2>
       <p class="product-desc">
-        Kanji is India's oldest probiotic drink, fermented from black carrots and mustard seeds. Our grandmothers knew it. We forgot it. Daatun brings it back — pure, potent, and alive.
+        Kanji is India's oldest probiotic drink, traditionally fermented from beetroot and mustard seeds. Our grandmothers knew it. We forgot it. Daatun brings it back: pure, potent, and alive.
       </p>
       <div class="benefits-grid">
         <div class="benefit-card">
@@ -699,7 +721,7 @@
         <div class="benefit-card">
           <div class="benefit-icon">🛡️</div>
           <div class="benefit-title">Immunity</div>
-          <div class="benefit-sub">Anthocyanins from black carrot</div>
+          <div class="benefit-sub">Betalains from beetroot</div>
         </div>
         <div class="benefit-card">
           <div class="benefit-icon">🚫</div>
@@ -739,7 +761,7 @@
       <div class="why-card">
         <div class="why-num">02</div>
         <div class="why-card-title">Nothing hidden, nothing added</div>
-        <div class="why-card-text">Every Daatun product is clean-label — what you see is what you get. No fillers, no shortcuts.</div>
+        <div class="why-card-text">Every Daatun product is clean-label: what you see is what you get. No fillers, no shortcuts.</div>
       </div>
       <div class="why-card">
         <div class="why-num">03</div>
