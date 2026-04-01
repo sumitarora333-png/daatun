@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daatun | India's OG Superfoods</title>
+  <title>Daatun · India's OG Superfoods</title>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5E3ZSXRZQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5E3ZSXRZQL');
+  </script>
+
   <style>
     :root {
       --cream: #F5EFE0;
@@ -14,6 +24,8 @@
       --mustard: #D4A017;
       --purple: #3B1F4E;
       --kanji-purple: #5C2A6B;
+      --sattu-gold: #9A6200;
+      --sattu-dark: #5A3A00;
       --light-cream: #FBF7EE;
     }
 
@@ -48,7 +60,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 2.5rem;
-      background: rgba(245,239,224,0.85);
+      background: rgba(245,239,224,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(196,86,42,0.15);
     }
@@ -84,23 +96,10 @@
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 2px 12px rgba(37,211,102,0.35);
+      white-space: nowrap;
     }
     .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
-    .nav-cta svg { width: 16px; height: 16px; }
-
-    .nav-ig {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(196,86,42,0.3);
-      color: var(--terracotta);
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .nav-ig:hover { background: var(--terracotta); color: #fff; border-color: var(--terracotta); }
-    .nav-ig svg { width: 16px; height: 16px; }
+    .nav-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
 
     /* ── HERO ── */
     .hero {
@@ -140,7 +139,7 @@
 
     .hero-title {
       font-family: 'Fraunces', serif;
-      font-size: clamp(3rem, 5vw, 5.2rem);
+      font-size: clamp(2.6rem, 5vw, 5.2rem);
       font-weight: 800;
       line-height: 1.0;
       color: var(--charcoal);
@@ -222,7 +221,7 @@
       position: absolute;
       width: 520px; height: 520px;
       border-radius: 50%;
-      background: radial-gradient(circle, #6B2D82 0%, #3B1F4E 60%, transparent 100%);
+      background: radial-gradient(circle, #8B1A3A 0%, #5C0F22 60%, transparent 100%);
       opacity: 0.12;
       animation: pulse 6s ease-in-out infinite;
     }
@@ -249,7 +248,6 @@
       50% { transform: translateY(-14px); }
     }
 
-    /* SVG Jar illustration */
     .kanji-jar svg { width: 100%; height: 100%; }
 
     .kanji-label {
@@ -322,6 +320,15 @@
       position: relative;
     }
 
+    /* Sattu section: reverse columns on desktop */
+    .product-section-alt {
+      background: rgba(212,160,23,0.04);
+      border-top: 1px solid rgba(212,160,23,0.12);
+      border-bottom: 1px solid rgba(212,160,23,0.12);
+    }
+    .product-section-alt .product-content { order: 2; }
+    .product-section-alt .product-visual  { order: 1; }
+
     .section-label {
       font-size: 0.7rem;
       letter-spacing: 0.22em;
@@ -339,10 +346,12 @@
       width: 22px; height: 1px;
       background: var(--terracotta);
     }
+    .section-label-gold { color: var(--sattu-gold); }
+    .section-label-gold::before { background: var(--sattu-gold); }
 
     .product-title {
       font-family: 'Fraunces', serif;
-      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
       font-weight: 800;
       line-height: 1.05;
       color: var(--charcoal);
@@ -353,6 +362,7 @@
       font-style: italic;
       color: var(--kanji-purple);
     }
+    .product-title em.gold { color: var(--sattu-gold); }
 
     .product-desc {
       font-size: 1rem;
@@ -375,6 +385,10 @@
       border-radius: 8px;
       padding: 1rem 1.2rem;
     }
+    .benefit-card-gold {
+      background: #FBF3E0;
+      border-color: rgba(212,160,23,0.2);
+    }
     .benefit-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
     .benefit-title { font-size: 0.8rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.2rem; }
     .benefit-sub { font-size: 0.72rem; color: #7A5C4A; font-weight: 300; }
@@ -394,6 +408,9 @@
       background: radial-gradient(circle at 40% 40%, #C4562A22, #3B1F4E18 70%, transparent);
       position: absolute;
     }
+    .product-circle-bg-gold {
+      background: radial-gradient(circle at 40% 40%, #D4A01722, #9A620018 70%, transparent);
+    }
 
     /* ── WHY DAATUN ── */
     .why-section {
@@ -407,7 +424,7 @@
       content: 'दातुन';
       position: absolute;
       font-family: 'Fraunces', serif;
-      font-size: 18vw;
+      font-size: 20vw;
       font-weight: 800;
       color: rgba(255,255,255,0.03);
       top: 50%;
@@ -415,8 +432,6 @@
       transform: translate(-50%, -50%);
       white-space: nowrap;
       pointer-events: none;
-      overflow: hidden;
-      max-width: 100%;
     }
 
     .why-header {
@@ -490,7 +505,7 @@
 
     .cta-title {
       font-family: 'Fraunces', serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
       font-weight: 800;
       line-height: 1.05;
       color: var(--charcoal);
@@ -548,27 +563,6 @@
     }
     footer strong { color: var(--cream); font-weight: 500; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 4rem 1.5rem 2rem; }
-      .hero-right { min-height: 380px; }
-      .badge-1, .badge-2, .badge-3 { display: none; }
-
-      .product-section { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
-      .product-visual { display: none; }
-
-      .why-section { padding: 4rem 1.5rem; }
-      .why-grid { grid-template-columns: 1fr; }
-
-      .cta-section { padding: 4rem 1.5rem; }
-
-      nav { padding: 0.9rem 1.2rem; gap: 0.5rem; }
-      .nav-tagline { display: none; }
-      .nav-logo { font-size: 1.3rem; }
-      .nav-cta { padding: 0.5rem 0.9rem; font-size: 0.76rem; }
-    }
-
     /* ── ANIMATIONS ── */
     .fade-up {
       opacity: 0;
@@ -582,6 +576,111 @@
     .delay-2 { animation-delay: 0.25s; }
     .delay-3 { animation-delay: 0.4s; }
     .delay-4 { animation-delay: 0.55s; }
+
+    /* ── RESPONSIVE: TABLET (≤900px) ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-tagline { display: none; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 4rem 2rem 2rem; }
+      .hero-right { min-height: 360px; }
+      .badge-1, .badge-2, .badge-3 { display: none; }
+
+      .product-section {
+        grid-template-columns: 1fr;
+        padding: 4rem 2rem;
+        gap: 3rem;
+      }
+      .product-section-alt .product-content { order: 1; }
+      .product-section-alt .product-visual  { order: 2; display: none; }
+      .product-visual { display: none; }
+
+      .why-section { padding: 4rem 2rem; }
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+      .cta-section { padding: 4rem 2rem; }
+    }
+
+    /* ── RESPONSIVE: MOBILE (≤600px) ── */
+    @media (max-width: 600px) {
+      nav {
+        padding: 0.9rem 1.2rem;
+        gap: 0.5rem;
+      }
+      .nav-logo { font-size: 1.3rem; }
+      .nav-cta {
+        padding: 0.45rem 0.9rem;
+        font-size: 0.75rem;
+        gap: 0.35rem;
+      }
+      .nav-cta .nav-cta-text { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 64px;
+      }
+      .hero-left {
+        padding: 3rem 1.5rem 1.5rem;
+      }
+      .hero-title {
+        font-size: clamp(2.2rem, 10vw, 3rem);
+        margin-bottom: 1rem;
+      }
+      .hero-desc {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
+      .hero-right {
+        min-height: 300px;
+        padding: 1rem 0 2rem;
+      }
+      .kanji-jar {
+        width: 200px;
+        height: 270px;
+      }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .btn-primary { width: 100%; justify-content: center; font-size: 0.9rem; }
+
+      .marquee-track { animation-duration: 14s; }
+
+      .product-section {
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+      }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .benefit-card { padding: 0.85rem 1rem; }
+
+      .why-section { padding: 3rem 1.5rem; }
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .why-card { padding: 1.4rem; }
+      .why-num { font-size: 2.2rem; }
+
+      .cta-section { padding: 3rem 1.5rem; }
+      .cta-title { font-size: clamp(2rem, 9vw, 2.8rem); }
+      .cta-wa-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.95rem;
+        padding: 1rem 1.5rem;
+      }
+
+      .product-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+      footer { padding: 1.5rem 1rem; font-size: 0.75rem; }
+    }
+
+    /* ── RESPONSIVE: SMALL PHONES (≤380px) ── */
+    @media (max-width: 380px) {
+      .hero-title { font-size: 2rem; }
+      .nav-logo { font-size: 1.2rem; }
+    }
   </style>
 </head>
 <body>
@@ -590,15 +689,10 @@
   <nav>
     <a href="#" class="nav-logo">Daatun</a>
     <span class="nav-tagline">India's OG Superfoods</span>
-    <div style="display:flex;align-items:center;gap:0.75rem;">
-      <a href="https://instagram.com/daatun.co" class="nav-ig" target="_blank" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" class="nav-cta" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        Order on WhatsApp
-      </a>
-    </div>
+    <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20from%20Daatun!" class="nav-cta" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      <span class="nav-cta-text">Order on WhatsApp</span>
+    </a>
   </nav>
 
   <!-- HERO -->
@@ -609,7 +703,7 @@
         Ancient roots.<br/><em>Modern</em><br/>nourishment.
       </h1>
       <p class="hero-desc fade-up delay-2">
-        Daatun brings back the forgotten wisdom of India's ancestral pantry. Real ingredients, zero compromise, straight from the source to your gut.
+        Daatun brings back the forgotten wisdom of India's ancestral pantry: real ingredients, zero compromise, straight from the source to your gut.
       </p>
       <div class="hero-actions fade-up delay-3">
         <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" target="_blank" class="btn-primary">
@@ -630,20 +724,20 @@
 
       <div class="kanji-visual">
         <div class="kanji-jar">
-          <!-- SVG Kanji Jar Illustration -->
+          <!-- SVG Kanji Jar Beetroot Edition -->
           <svg viewBox="0 0 280 380" fill="none" xmlns="http://www.w3.org/2000/svg">
             <!-- Jar shadow -->
-            <ellipse cx="140" cy="360" rx="80" ry="12" fill="#3B1F4E" opacity="0.15"/>
+            <ellipse cx="140" cy="360" rx="80" ry="12" fill="#5C0F22" opacity="0.15"/>
             <!-- Jar body -->
-            <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="#5C1A2E" opacity="0.9"/>
+            <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="#5C0F22" opacity="0.9"/>
             <!-- Liquid gradient -->
-            <path d="M62 160 Q52 220 57 285 Q62 338 140 343 Q218 338 223 285 Q228 220 218 160 Z" fill="url(#liquidGrad)"/>
+            <path d="M62 160 Q52 220 57 285 Q62 338 140 343 Q218 338 223 285 Q228 220 218 160 Z" fill="url(#beetrootGrad)"/>
             <!-- Jar glass highlights -->
             <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
             <!-- Glass sheen -->
             <path d="M70 145 Q65 200 68 260" stroke="rgba(255,255,255,0.25)" stroke-width="6" stroke-linecap="round"/>
             <!-- Jar neck -->
-            <rect x="90" y="100" width="100" height="35" rx="4" fill="#3B1F4E" opacity="0.95"/>
+            <rect x="90" y="100" width="100" height="35" rx="4" fill="#4A0E1F" opacity="0.95"/>
             <rect x="90" y="100" width="100" height="35" rx="4" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
             <!-- Lid -->
             <rect x="82" y="82" width="116" height="24" rx="6" fill="#C4562A"/>
@@ -651,7 +745,7 @@
             <rect x="88" y="88" width="104" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
             <!-- Label on jar -->
             <rect x="78" y="175" width="124" height="80" rx="6" fill="rgba(245,239,224,0.92)"/>
-            <text x="140" y="200" text-anchor="middle" font-family="serif" font-size="18" font-weight="800" fill="#3B1F4E">Kanji</text>
+            <text x="140" y="200" text-anchor="middle" font-family="serif" font-size="18" font-weight="800" fill="#5C0F22">Kanji</text>
             <text x="140" y="216" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#C4562A" letter-spacing="2" font-weight="600">DAATUN</text>
             <line x1="90" y1="222" x2="190" y2="222" stroke="#C4562A" stroke-width="0.8" opacity="0.4"/>
             <text x="140" y="235" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="#5A4033" letter-spacing="1">BEETROOT PROBIOTIC</text>
@@ -663,10 +757,10 @@
             <circle cx="120" cy="315" r="5" fill="rgba(255,255,255,0.1)"/>
             <!-- Defs -->
             <defs>
-              <linearGradient id="liquidGrad" x1="60" y1="160" x2="225" y2="345" gradientUnits="userSpaceOnUse">
+              <linearGradient id="beetrootGrad" x1="60" y1="160" x2="225" y2="345" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#8B1A3A"/>
-                <stop offset="50%" stop-color="#6B0F28"/>
-                <stop offset="100%" stop-color="#420A18"/>
+                <stop offset="50%" stop-color="#6B0828"/>
+                <stop offset="100%" stop-color="#3D0415"/>
               </linearGradient>
             </defs>
           </svg>
@@ -686,6 +780,7 @@
       <div class="marquee-item"><span class="marquee-dot">✦</span>India's OG Superfoods</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>Beetroot</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>Immunity Booster</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>High Protein Sattu</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>100% Natural</div>
       <!-- Duplicate for loop -->
       <div class="marquee-item"><span class="marquee-dot">✦</span>Probiotic Rich</div>
@@ -695,17 +790,18 @@
       <div class="marquee-item"><span class="marquee-dot">✦</span>India's OG Superfoods</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>Beetroot</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>Immunity Booster</div>
+      <div class="marquee-item"><span class="marquee-dot">✦</span>High Protein Sattu</div>
       <div class="marquee-item"><span class="marquee-dot">✦</span>100% Natural</div>
     </div>
   </div>
 
-  <!-- PRODUCT SECTION -->
+  <!-- PRODUCT 1: KANJI -->
   <section class="product-section" id="product">
-    <div>
+    <div class="product-content">
       <div class="section-label">Our First Drop</div>
-      <h2 class="product-title">Meet <em>Kanji</em>,<br/>your gut's best friend</h2>
+      <h2 class="product-title">Meet <em>Kanji</em><br/>your gut's best friend</h2>
       <p class="product-desc">
-        Kanji is India's oldest probiotic drink, traditionally fermented from beetroot and mustard seeds. Our grandmothers knew it. We forgot it. Daatun brings it back: pure, potent, and alive.
+        Kanji is India's oldest probiotic drink, fermented from beetroot and mustard seeds. Our grandmothers knew it. We forgot it. Daatun brings it back, pure, potent, and alive.
       </p>
       <div class="benefits-grid">
         <div class="benefit-card">
@@ -721,7 +817,7 @@
         <div class="benefit-card">
           <div class="benefit-icon">🛡️</div>
           <div class="benefit-title">Immunity</div>
-          <div class="benefit-sub">Betalains from beetroot</div>
+          <div class="benefit-sub">Betalains & antioxidants from beetroot</div>
         </div>
         <div class="benefit-card">
           <div class="benefit-icon">🚫</div>
@@ -737,12 +833,99 @@
 
     <div class="product-visual">
       <div class="product-circle-bg"></div>
-      <!-- Large decorative text -->
       <div style="position:relative;z-index:2;text-align:center;">
         <div style="font-family:'Fraunces',serif;font-size:10rem;font-weight:800;color:var(--kanji-purple);opacity:0.08;line-height:1;user-select:none;">काँजी</div>
         <div style="margin-top:-4rem;font-family:'Fraunces',serif;font-size:2rem;font-weight:300;font-style:italic;color:var(--kanji-purple);opacity:0.5;">Kanji</div>
         <div style="margin-top:1rem;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);opacity:0.6;">Since forever</div>
       </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT 2: SATTU -->
+  <section class="product-section product-section-alt" id="sattu">
+    <div class="product-visual">
+      <div class="product-circle-bg product-circle-bg-gold"></div>
+      <div style="position:relative;z-index:2;text-align:center;">
+        <!-- Sattu Jar SVG -->
+        <div style="width:240px;height:320px;margin:0 auto 1.5rem;animation:float 5s ease-in-out infinite;animation-delay:-2s;">
+          <svg viewBox="0 0 280 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Jar shadow -->
+            <ellipse cx="140" cy="360" rx="80" ry="12" fill="#5A3A00" opacity="0.18"/>
+            <!-- Jar body -->
+            <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="#4A2800" opacity="0.88"/>
+            <!-- Powder fill gradient -->
+            <path d="M62 180 Q52 230 57 285 Q62 338 140 343 Q218 338 223 285 Q228 230 218 180 Z" fill="url(#sattuGrad)"/>
+            <!-- Jar glass highlights -->
+            <path d="M60 130 Q50 200 55 280 Q60 340 140 345 Q220 340 225 280 Q230 200 220 130 Z" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+            <!-- Glass sheen -->
+            <path d="M70 145 Q65 200 68 260" stroke="rgba(255,255,255,0.2)" stroke-width="6" stroke-linecap="round"/>
+            <!-- Texture lines in powder -->
+            <path d="M75 240 Q140 232 205 240" stroke="rgba(255,255,255,0.06)" stroke-width="3"/>
+            <path d="M70 265 Q140 257 210 265" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
+            <!-- Jar neck -->
+            <rect x="90" y="100" width="100" height="35" rx="4" fill="#3A1E00" opacity="0.95"/>
+            <rect x="90" y="100" width="100" height="35" rx="4" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <!-- Lid -->
+            <rect x="82" y="82" width="116" height="24" rx="6" fill="#D4A017"/>
+            <rect x="82" y="82" width="116" height="24" rx="6" fill="none" stroke="#9A6200" stroke-width="1.5"/>
+            <rect x="88" y="88" width="104" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>
+            <!-- Label on jar -->
+            <rect x="78" y="165" width="124" height="90" rx="6" fill="rgba(251,243,224,0.93)"/>
+            <text x="140" y="192" text-anchor="middle" font-family="serif" font-size="18" font-weight="800" fill="#5A3A00">Sattu</text>
+            <text x="140" y="208" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#9A6200" letter-spacing="2" font-weight="600">DAATUN</text>
+            <line x1="90" y1="214" x2="190" y2="214" stroke="#9A6200" stroke-width="0.8" opacity="0.4"/>
+            <text x="140" y="227" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="#5A4033" letter-spacing="1">ROASTED GRAM PROTEIN</text>
+            <text x="140" y="240" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#7A5C4A" opacity="0.7">500g</text>
+            <!-- Speckle texture dots -->
+            <circle cx="105" cy="295" r="2.5" fill="rgba(255,255,255,0.08)"/>
+            <circle cx="170" cy="310" r="3.5" fill="rgba(255,255,255,0.06)"/>
+            <circle cx="190" cy="280" r="2" fill="rgba(255,255,255,0.1)"/>
+            <circle cx="115" cy="320" r="3" fill="rgba(255,255,255,0.07)"/>
+            <defs>
+              <linearGradient id="sattuGrad" x1="60" y1="180" x2="225" y2="345" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#C8860A"/>
+                <stop offset="50%" stop-color="#9A6200"/>
+                <stop offset="100%" stop-color="#5A3A00"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--sattu-gold);letter-spacing:0.12em;text-transform:uppercase;opacity:0.75;">Sattu · Roasted Gram Protein</div>
+      </div>
+    </div>
+
+    <div class="product-content">
+      <div class="section-label section-label-gold">Our Second Drop</div>
+      <h2 class="product-title">Meet <em class="gold">Sattu</em><br/>India's ancient protein</h2>
+      <p class="product-desc">
+        Sattu is India's original superfood: dry-roasted gram flour, ground to perfection. Packed with protein, fibre, and cooling properties, it's been fuelling India's hardest workers for centuries. Daatun brings it back, unprocessed and unadulterated.
+      </p>
+      <div class="benefits-grid">
+        <div class="benefit-card benefit-card-gold">
+          <div class="benefit-icon">💪</div>
+          <div class="benefit-title">High Protein</div>
+          <div class="benefit-sub">22g protein per 100g serving</div>
+        </div>
+        <div class="benefit-card benefit-card-gold">
+          <div class="benefit-icon">⚡</div>
+          <div class="benefit-title">Energy Boost</div>
+          <div class="benefit-sub">Sustained slow-release energy</div>
+        </div>
+        <div class="benefit-card benefit-card-gold">
+          <div class="benefit-icon">🌡️</div>
+          <div class="benefit-title">Body Cooling</div>
+          <div class="benefit-sub">Ancient cooling properties</div>
+        </div>
+        <div class="benefit-card benefit-card-gold">
+          <div class="benefit-icon">🌾</div>
+          <div class="benefit-title">High Fibre</div>
+          <div class="benefit-sub">Supports gut health & digestion</div>
+        </div>
+      </div>
+      <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Sattu%20from%20Daatun!" target="_blank" class="btn-primary" style="background:var(--sattu-gold);">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span>Order Sattu via WhatsApp</span>
+      </a>
     </div>
   </section>
 
@@ -774,9 +957,9 @@
   <!-- CTA -->
   <section class="cta-section">
     <div class="cta-eyebrow">Ready to go OG?</div>
-    <h2 class="cta-title">Order your first<br/><em>Kanji</em> today</h2>
-    <p class="cta-sub">Tap below to chat with us on WhatsApp. We'll take your order, answer your questions, and get your Kanji to you fresh.</p>
-    <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20Kanji%20from%20Daatun!" target="_blank" class="cta-wa-btn">
+    <h2 class="cta-title">Order your first<br/><em>Daatun</em> today</h2>
+    <p class="cta-sub">Tap below to chat with us on WhatsApp. We'll take your order, answer your questions, and get your Kanji or Sattu to you fresh.</p>
+    <a href="https://wa.me/918377025237?text=Hi%2C%20I%27d%20like%20to%20order%20from%20Daatun!" target="_blank" class="cta-wa-btn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       Chat with us on WhatsApp
     </a>
